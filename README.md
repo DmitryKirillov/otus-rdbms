@@ -43,6 +43,8 @@ ORDER BY u.created DESC
 LIMIT 100
 ```
 
+---
+
 ### followers_following
 
 Таблица социальных связей между пользователями.
@@ -84,6 +86,8 @@ HAVING COUNT(*) > 10
 ORDER BY followers_count DESC 
 ```
 
+---
+
 ### country_dictionary
 
 Словарь стран мира. В основе лежат трёхсимвольные коды ISO 3166-1. Я рассматривал вариант использования кода в качестве
@@ -103,6 +107,8 @@ ORDER BY followers_count DESC
 | --- | --- | --- |
 | code | UNIQUE | Обеспечение уникальности кодов |
 
+---
+
 ### city_dictionary
 
 Словарь городов с привязкой к странам.
@@ -114,6 +120,8 @@ ORDER BY followers_count DESC
 | city_id | ID города | Совпадает с кол-вом строк | – |
 | name | Наименование города | Почти равна кол-ву строк | – |
 | country_id | ID страны | ≈ 1/100 от кол-ва строк | – |
+
+---
 
 ### locations
 
@@ -155,6 +163,8 @@ WHERE l.country_id = 100
   AND l.distance > 10000
 ORDER BY distance
 ```
+
+---
 
 ### workouts
 
@@ -201,6 +211,8 @@ WHERE w.location_id = 14
   AND w.total_distance > 10000
 ```
 
+---
+
 ### tracks
 
 Наборы данных, импортированных из спортивных приложений. Каждый набор данных привязан к конкретному забегу.
@@ -219,6 +231,8 @@ WHERE w.location_id = 14
 | Поля | Тип индекса |
 | --- | --- |
 | track_id, workout_id | Первичный ключ |
+
+---
 
 ### track_points
 
@@ -243,6 +257,8 @@ WHERE w.location_id = 14
 | longitude | Долгота | Почти равна кол-ву строк | -180.00000000 ≤ N ≤ 180.00000000 |
 | run_cadence | Каданс | ≈ 100 | 0 < N ≤ 300 |
 | heart_rate | Пульс | ≈ 200 | 0 < N ≤ 300 |
+
+---
 
 ### races
 
@@ -270,6 +286,8 @@ WHERE w.location_id = 14
 | --- | --- | --- |
 | created_at | Обычный | Фильтрация и сортировка соревнований по дате |
 | start_time | Обычный | Фильтрация и сортировка соревнований по времени начала |
+
+---
 
 ## race_participants
 
